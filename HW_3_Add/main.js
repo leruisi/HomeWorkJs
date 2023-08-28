@@ -231,13 +231,26 @@ for (const emptyElement of empty) {
 // -знайти наібльшу книжку.
 
 // - знайти книжку/ки з найбільшою кількістю жанрів
-// - знайти книжку/ки з найдовшою назвою
-for (const book of books) {
-    if(book.name.length >book.name.length ){
-        console.log(`Книгу писали два автори: ${book.name}`)
-    }
 
+
+
+// - знайти книжку/ки з найдовшою назвою
+let longestBooks = [];
+let maxLength = 0;
+
+for (const book of books) {
+    const nameLength = book.name[0].length;
+
+    if (nameLength > maxLength) {
+        longestBooks = [book.name[0]];
+        maxLength = nameLength;
+    } else if (nameLength === maxLength) {
+        longestBooks[longestBooks.length] = book.name[0];
+    }
 }
+
+console.log(`Книги з найдовшою назвою (${maxLength} символів): ${longestBooks.join(', ')}`);
+
 // - знайти книжку/ки які писали 2 автори
     for (const book of books) {
         if(book.authors.length ===2 ){
@@ -376,3 +389,87 @@ for (let letter of letters) {
 }
 
 console.log(word);
+
+// Попросите пользователя ввести 3 имени и фамилии, например студентов.
+//     Выведите введенные данные в тело документа методом document.write() в виде абзацев и нумерованного списка.
+// let names = [];
+//
+// for (let i = 0; i < 3; i++) {
+//     const firstName = prompt(`Введіть ім'я ${i + 1} студента:`);
+//     const lastName = prompt(`Введіть прізвище ${i + 1} студента:`);
+//     names.push(`${firstName} ${lastName}`);
+// }
+//
+// document.write('<h2>Список студентів:</h2>');
+// document.write('<p>Абзацами:</p>');
+// for (const name of names) {
+//     document.write(`<p>${name}</p>`);
+// }
+//
+// document.write('<p>Нумерований список:</p>');
+// document.write('<ol>');
+// for (const name of names) {
+//     document.write(`<li>${name}</li>`);
+// }
+// document.write('</ol>');
+
+// Задача 2. Компания по транспортировке мебели заносит любую мебель на 1-й этаж бесплатно, со 2-го по 4-й включительно - по 20грн., с 5-го по 7-й включительно - по 30грн., а с 8-го и выше - по 40грн.
+// //     Узнайте у пользователя, на какой этаж нужно занести мебель, и рассчитайте стоимость транспортировки.
+
+
+    let floors = []
+
+    for (let m = 0; m < 1; m++) {
+       let floor = prompt('Який поверх')
+        floors.push(`${floor}`)
+
+    }
+
+for (const floor of floors) {
+    if (floor ===1){
+        document.write(` на ${floor} поверх безкоштно ` )
+    }
+    else
+        if (floor>=2 || floor<=4)
+        {document.write(` со 2-го по 4-й включительно - по 20грн.`)}
+
+
+    else
+        if(floor>=5|| floor<=7){
+            document.write('с 5-го по 7-й включительно - по 30грн.')
+        }
+
+     else
+         if  (floor >8){
+             document.write('с 8-го и выше - по 40грн')
+
+         }
+else {console.error('eror')}
+}
+
+//2
+let cost = 0;
+
+while (true) {
+    let floor = parseInt(prompt('На який поверх потрібно занести мебель? (Введіть число)'));
+
+    if (!isNaN(floor)) {
+        if (floor === 1) {
+            cost = 0;
+        } else if (floor >= 2 && floor <= 4) {
+            cost = 20;
+        } else if (floor >= 5 && floor <= 7) {
+            cost = 30;
+        } else if (floor >= 8) {
+            cost = 40;
+        } else {
+            console.error('Поверх некоректний');
+            continue;
+        }
+
+        document.write(`Доставка на ${floor} поверх коштує ${cost} грн.`);
+        break;
+    } else {
+        console.error('Введіть коректне число.');
+    }
+}
