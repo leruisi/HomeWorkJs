@@ -33,7 +33,7 @@ let ulLii = (text) => document.write(`<ul>
     <li>${text}</li>
     <li>${text}</li>
     <li>${text}</li>
-    
+
     </ul>`
 
 )
@@ -42,92 +42,157 @@ ulLii('Hello')
 // - створити функцію яка створює ul з трьома елементами li. Текст li задати через аргумент всім однаковий.
 // Кількість li визначається другим аргументом, який є числовим (тут використовувати цикл)
 
-let ulElement = '';
+// let ulElement = '';
 
-let liLoop = (num, text) => {
-    ulElement = '<ul>';
+// let liLoop = (num, text) => {
+//     ulElement = '<ul>';
+//     for (let i = 0; i < num; i++) {
+//         ulElement += `<li>${text}</li>`;
+//     }
+//     ulElement += '</ul>';
+// };
+//
+// let num = 3;
+// let liText = 'Hello';
+//
+// liLoop(num, liText);
+// document.write(ulElement);
+
+
+let  liLoop = (num, text)=>  {
+    let ulElement = '<ul>';
     for (let i = 0; i < num; i++) {
         ulElement += `<li>${text}</li>`;
     }
     ulElement += '</ul>';
-};
+    return ulElement;
+
+}
 
 let num = 3;
 let liText = 'Hello';
 
-liLoop(num, liText);
-document.write(ulElement);
+let ulList = liLoop(num, liText);
+document.write(ulList);
+
 
 // - створити функцію яка приймає масив примітивних елементів (числа,стрінги,булеві), та будує для них список
-let list = '';
+// let list = '';
+//
+// let createList = arr => {
+//     list = '<ol>';
+//     for (let item of arr) {
+//         list += `<li>${item}</li>`;
+//     }
+//     list += '</ol>';
+// };
+//
+// let arrays = [11, 22, 33, true, false, 'cat', 'school'];
+//
+// createList(arrays);
+// document.write(list);
 
-let createList = arr => {
-    list = '<ol>';
+const arrays = [11, 22, 33, true, false, 'cat', 'school'];
+
+let  createList = (arr) => {
+    let list = '<ol>';
     for (let item of arr) {
         list += `<li>${item}</li>`;
     }
     list += '</ol>';
-};
+    return list;
+}
 
-let arrays = [11, 22, 33, true, false, 'cat', 'school'];
+let myList = createList(arrays);
+document.write(myList);
 
-createList(arrays);
-document.write(list);
 
 
 // - створити функцію яка приймає масив об'єктів з наступними полями id,name,age , та виводить їх в документ. Для кожного об'єкту окремий блок.
-let users = [{id:1, name:'Lilyaf', age:22}, {id:2, name:'Lera', age:25}];
-let content = ''
+// let users = [{id:1, name:'Lilyaf', age:22}, {id:2, name:'Lera', age:25}];
+// let content = ''
+// let  displayUsers = (arr)=> {
+//     for (let user of arr) {
+//         content += `<div>ID: ${user.id}, Name: ${user.name}, Age: ${user.age}</div>`;
+//     }
+// }
+//
+//  displayUsers(users);
+// document.write(content);
+
+
+let users = [{id:1, name:'Lilya', age:22}, {id:2, name:'Lera', age:25}];
 let  displayUsers = (arr)=> {
-    // let content = '';
+    let content = '';
     for (let user of arr) {
         content += `<div>ID: ${user.id}, Name: ${user.name}, Age: ${user.age}</div>`;
     }
+    return content;
 }
 
- displayUsers(users);
-document.write(content);
+let usersContent = displayUsers(users);
+document.write(usersContent);
 
 // - створити функцію яка повертає найменьше число з масиву
-const arrayMin = [11, 1, 22, 3, 44];
-let globalMin = arrayMin[0];
+// const arrayMin = [11, 1, 22, 3, 44];
+// let globalMin = arrayMin[0];
+//
+// let min = arr => {
+//     for (let i = 1; i < arr.length; i++) {
+//         if (arr[i] < globalMin) {
+//             globalMin = arr[i];
+//         }
+//     }
+// }
+//
+// min(arrayMin);
+// console.log(globalMin);
 
-let min = arr => {
-    for (let i = 1; i < arr.length; i++) {
-        if (arr[i] < globalMin) {
-            globalMin = arr[i];
+let min = (arrayMin) =>{
+    let min = arrayMin[0];
+    for (let i = 1; i < arrayMin.length; i++) {
+        if (arrayMin[i] < min) {
+            min = arrayMin[i];
         }
     }
+    return min
 }
+const arrayMin = [11,1,22,3,44,0]
+console.log(min(arrayMin))
 
-min(arrayMin);
-console.log(globalMin);
+
+
 
 
 // - створити функцію sum(arr)яка приймає масив чисел, сумує значення елементів масиву та повертає його. Приклад sum([1,2,10]) //->13
 const sumM = [1, 2, 3, 10];
-let sum = 0;
-let  sumArray= (arr) => {
+
+let  sumArray = (arr) => {
+    let sum = 0;
     for (let i = 0; i < arr.length; i++) {
         sum += arr[i];
     }
-
+    return sum;
 }
- sumArray(sumM);
-console.log(sum);
+
+let resultt = sumArray(sumM);
+console.log(resultt);
 
 // - створити функцію swap(arr,index1,index2). Функція міняє місцями заняення у відаовідних індексах
 // Приклад  swap([11,22,33,44],0,1) //=> [22,11,33,44]
 
-let  swap = (arr, index1, index2) => {
-    let temp = arr[index1];
-    arr[index1] = arr[index2];
-    arr[index2] = temp;
+let  findAveragee= (arr) => {
+    let sum = 0;
+    for (let i = 0; i < arr.length; i++) {
+        sum += arr[i];
+    }
+    let average = sum / arr.length;
+    return average;
 }
-let fruits = ['home', 'index', 'school', 'peach'];
-swap(fruits, 1, 2);
-console.log(fruits);
 
+let numberss = [10, 20, 30, 40, 50];
+let avg = findAveragee(numberss);
+console.log(avg);
 // - Написати функцію обміну валюти exchange(sumUAH,currencyValues,exchangeCurrency)
 // Приклад exchange(10000,[{currency:'USD',value:40},{currency:'EUR',value:42}],'USD') // => 250
 
