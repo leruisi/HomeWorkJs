@@ -169,14 +169,110 @@ console.log(sumExchange);
 
 
 // - створити функцію яка приймає три числа та виводить найменьше. (Без Math.min!)
+    function nim(a,b,c) {
+        let min = a
+        if (b<min)
+            min=b
+        if (c<min)
+            min = c
+
+        return min
+    }
+
+console.log(nim(11,3,4))
+
 // - створити функцію яка приймає три числа та виводить найбільше. (Без Math.max!)
+
+    function most(a,b,c) {
+            let max = a
+        if (b>max)
+            max=b
+        if (c>max)
+            max=c
+        return max
+    }
+    console.log(most(11,2,0))
+
 // - створити функцію яка повертає найбільше число з масиву
+    let maxArray = [11, 22, 3, 4, 6];
+
+    function findMaxz(arr) {
+        let maxElement = arr[0];
+        for (let i = 1; i < arr.length; i++) {
+            if (arr[i] > maxElement) {
+                maxElement = arr[i];
+            }
+        }
+        return maxElement;
+    }
+
+    console.log(findMaxz(maxArray));
 // - створити функцію яка приймає масив чисел та повертає середнє арифметичне його значень.
+    function findAverage(arr) {
+        let sum = 0;
+        for (let i = 0; i < arr.length; i++) {
+            sum += arr[i];
+        }
+        let average = sum / arr.length;
+        return average;
+    }
+
+    let numbers = [10, 20, 30, 40, 50];
+    let avg = findAverage(numbers);
+    console.log(avg);
+
 // - створити функцію яка приймає будь-яку кількість чисел, повертає найменьше, а виводить найбільше (Math використовувати заборонено);
+
+  function numbersd(...args) {
+      let minn = [0]
+      let maxx = [0]
+
+      for (let num of args) {
+          if (num < minn) {
+              minn = num
+          }
+
+          if (num > maxx) {
+              maxx = num
+          }
+      }
+      console.log(maxx)
+
+      return minn
+
+  }
+let minValue = numbersd(10, 5, 20, 3, 15);
+console.log(`Найменше число: ${minValue}`);
 // - створити функцію яка заповнює масив рандомними числами
 // (цей код генерує рандомні числа в діапазоні від 0 до 100 - Math.round(Math.random()*100)) та виводить його.
+
+
 // - створити функцію яка заповнює масив рандомними числами в діапазоні від 0 до limit. limit - аргумент, який характеризує кінцеве значення діапазону.
-// - Функція приймає масив та робить з нього новий масив в зворотньому порядку. [1,2,3] -> [3, 2, 1].
+function fillArrayWithRandomNumbers(limit) {
+    let result = [];
+    for (let i = 0; i < limit; i++) {
+        let randomNum = Math.floor(Math.random() * (limit + 1));
+        result.push(randomNum);
+    }
+    return result;
+}
+
+let filledArray = fillArrayWithRandomNumbers(10);
+console.log(filledArray);
+
+
+// - Функція приймає  масив та робить з нього новий масив в зворотньому порядку. [1,2,3] -> [3, 2, 1].]
+    let array = [1, 2, 3];
+    let newcon = [];
+
+    function reverseArray(arr) {
+        for (let i = arr.length - 1; i >= 0; i--) {
+            newcon .push (arr[i]);
+        }
+        return newcon;
+    }
+
+    console.log(reverseArray(array)); // Виведе [3, 2, 1]
 
 
 
@@ -197,3 +293,12 @@ console.log(sumExchange);
 //     - Створити функцію яка приймає масив будь яких объектів, та повертає масив значень всіх обєктів
 // EXAMPLE:
 //     [{name: 'Dima', age: 13}, {model: 'Camry'}]  ===> [ Dima, 13, Camry ]
+
+//
+// ПРАВИЛА
+// Якщо ви оголошуєте пустий масив всередині функції, то при кожному виклику функції цей масив буде створюватися заново, і до нього додаватимуться лише нові значення.
+// При кожному новому виклику масив буде порожнім, і старі дані втрачатимуться.
+//
+//     Якщо ви оголошуєте масив ззовні функції, то він буде зберігати свій стан між викликами функції. Тобто, при кожному виклику функції ви будете працювати з масивом, в якому зберігаються старі дані плюс нові значення, які ви додаєте під час виклику функції.
+//
+//     Це механізм, який дозволяє зберігати і маніпулювати даними між різними викликами функції та між різними частинами програми.
