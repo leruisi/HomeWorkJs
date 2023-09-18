@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h2> Count : <i class="number"></i></h2>
+
+<script>
+    // є сторінка, на якій є блок, в якому знаходиться цифра.
+    // написати код, який при кожному перезавантаженні сторінки буде додавати до неї +1
+
+    const count = parseInt(localStorage.getItem('count')) || 0;
+    const block = document.querySelector('.number');
+    const newCount = count + 1;
+
+    block.textContent = newCount;
+
+    localStorage.setItem('count', newCount.toString());
+</script>
+</body>
+</html>

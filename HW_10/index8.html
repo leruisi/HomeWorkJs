@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+
+<h1 id="price-block">100 grn</h1>
+
+
+
+
+<script>
+
+  let newPrice = localStorage.getItem('price') ? JSON.parse(localStorage.getItem('price')) + 20 : 100;
+  const newTime = new Date().getTime();
+
+  if (newTime - time > 10000) {
+    newPrice += 10;
+    localStorage.setItem('price', newPrice.toString());
+  }
+
+  block.innerText = newPrice + ' grn';
+  localStorage.setItem('time', newTime.toString());
+
+
+
+
+
+
+</script>
+</body>
+</html>
