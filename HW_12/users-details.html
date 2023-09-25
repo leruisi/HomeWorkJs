@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h2>Page Details</h2>
+<div id="user-details"></div>
+
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const userId = urlParams.get('id');
+
+    fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
+        .then((response) => response.json())
+        .then((userData) => {
+            const userDetailsDiv = document.getElementById('user-details');
+
+            const userJson = JSON.stringify(userData, null, 2);
+            const detailItem = document.createElement('p');
+            detailItem.innerText = userJson;
+            userDetailsDiv.appendChild(detailItem);
+        })
+
+</script>
+
+<!--///////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+<!--<script>-->
+<!--    const urlParams = new URLSearchParams(window.location.search);-->
+<!--    const userId = urlParams.get('id');-->
+
+
+<!--    fetch(`https://jsonplaceholder.typicode.com/users/${userId}`, {-->
+<!--        method: 'GET',-->
+<!--        headers: {-->
+<!--            'Accept': 'application/json',-->
+<!--            'Content-Type': 'application/json'-->
+<!--        },-->
+<!--    })-->
+<!--        .then((response) => response.json())-->
+<!--        .then((userData) => {-->
+<!--            const userDetailsDiv = document.getElementById('user-details');-->
+
+
+<!--            const userInfoHTML = `-->
+<!--                <p>ID: ${userData.id}</p>-->
+<!--                <p>Name: ${userData.name}</p>-->
+<!--                <p>Username: ${userData.username}</p>-->
+<!--                <p>Email: ${userData.email}</p>-->
+<!--                <p>Address: ${userData.address.street}, ${userData.address.suite}, ${userData.address.city}, ${userData.address.zipcode}</p>-->
+<!--                <p>Phone: ${userData.phone}</p>-->
+<!--                <p>Website: ${userData.website}</p>-->
+<!--                <p>Company: ${userData.company.name}, ${userData.company.catchPhrase}, ${userData.company.bs}</p>-->
+<!--            `;-->
+
+<!--            userDetailsDiv.innerHTML = userInfoHTML;-->
+<!--        })-->
+<!--        .catch((error) => {-->
+<!--            console.error('Произошла ошибка:', error);-->
+<!--        });-->
+<!--</script>-->
+
+<!--//////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+
+<!--<script>-->
+<!--    const urlParams = new URLSearchParams(window.location.search);-->
+<!--    const userId = urlParams.get('id');-->
+
+<!--    fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)-->
+<!--        .then((response) => response.json())-->
+<!--        .then((userData) => {-->
+<!--            const userDetailsDiv = document.getElementById('user-details');-->
+
+
+<!--            for (const [key, value] of Object.entries(userData)) {-->
+<!--                const detailItem = document.createElement('p');-->
+<!--                detailItem.innerText = `${key}: ${value}`;-->
+<!--                userDetailsDiv.appendChild(detailItem);-->
+<!--            }-->
+<!--        })-->
+<!--        .catch((error) => {-->
+<!--            console.error('Произошла ошибка:', error);-->
+<!--        });-->
+<!--</script>-->
+
+</body>
+</html>
